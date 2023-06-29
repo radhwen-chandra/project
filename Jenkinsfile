@@ -4,20 +4,23 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/radhwen-chandra/project.git'
+        git branch: 'main', url: 'https://github.com/radhwen-chandra/project.git'
       }
     }
     
     stage('Build') {
       steps {
-        sh 'mvn clean package'
-      }
+         dir('spring') {
+          sh 'mvn clean package'
+       }
+     }
     }
-    
     stage('Unit Tests') {
       steps {
-        sh 'mvn test'
-      }
+         dir('spring') {
+          sh 'mvn test'
+       }
+     }
     }
     
     
