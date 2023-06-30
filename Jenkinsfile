@@ -10,14 +10,14 @@ pipeline {
     
     stage('Build') {
       steps {
-         dir('spring') {
+         dir('tpAchatProject') {
           sh 'mvn clean package'
        }
      }
     }
     stage('Unit Tests') {
       steps {
-         dir('spring') {
+         dir('tpAchatProject') {
           sh 'mvn test'
        }
      }
