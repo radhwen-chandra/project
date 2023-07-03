@@ -10,19 +10,19 @@ pipeline {
     
     stage('Build') {
       steps {
-         dir('tpAchatProject') {
+        dir('tpAchatProject') {
           sh 'mvn clean package'
-       }
-     }
-    }
-    stage('Unit Tests') {
-      steps {
-         dir('tpAchatProject') {
-          sh 'mvn test'
-       }
-     }
+        }
+      }
     }
     
+    stage('Unit Tests') {
+      steps {
+        dir('tpAchatProject') {
+          sh 'mvn test'
+        }
+      }
+    }
     
     stage('Build Docker Image') {
       steps {
