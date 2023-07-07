@@ -26,6 +26,7 @@ pipeline {
     
     stage('Build Docker Image') {
       steps {
+        dir ('tpAchatProject')
         sh 'docker build -t spring7 .'
       }
     }
