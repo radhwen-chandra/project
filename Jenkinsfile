@@ -25,6 +25,28 @@ pipeline {
         }
       }
     }
+      steps{
+                
+           script{
+                    
+                    withSonarQubeEnv(credentialsId: 'sonar') {
+                        
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                   }
+                    
+                }
+            }
+            stage('Quality Gate Status'){
+                
+                steps{
+                    
+                    script{
+                        
+                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
+                    }
+                }
+            }
     
     stage('Build Docker Image') {
       steps {
