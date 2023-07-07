@@ -26,9 +26,11 @@ pipeline {
     
     stage('Build Docker Image') {
       steps {
-        dir ('tpAchatProject')
+        dir ('tpAchatProject') {
         sh 'docker build -t spring7 .'
+        }  
       }
     }
   }
 }
+  
